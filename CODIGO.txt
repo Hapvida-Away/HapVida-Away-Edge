@@ -1,0 +1,31 @@
+#include <LiquidCrystal.h>
+
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+#define botao 10
+int statusBotao;
+const int buzzerPin = 6; 
+
+void setup()
+{
+  lcd.begin(16, 2);
+  pinMode(botao, INPUT);
+}
+
+void loop()
+{
+  statusBotao = digitalRead(botao); 
+  
+  if (statusBotao == HIGH)
+  {
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Uma ambulancia");
+    lcd.setCursor(0, 1);
+    lcd.print("esta a caminho!");
+    tone(buzzerPin, 500);
+    delay(300);
+    noTone(buzzerPin);
+    delay(5000);
+    lcd.clear();
+  }
+}

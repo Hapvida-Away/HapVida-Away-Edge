@@ -12,6 +12,65 @@ Este ainda é relacionado a matéria Edge Computing e Computer Systems, ministra
 
 Bem-vindo ao Hapvida Away, um projeto dedicado a conscientizar sobre primeiros socorros e resposta a emergências. Este README fornece uma visão geral da estrutura do projeto e de seus principais componentes.
 
+Esse código é um programa para Arduino que utiliza uma tela de LCD (LiquidCrystal) e um botão para simular uma situação em que uma ambulância está a caminho. Além disso, ele emite um som através de um buzzer quando o botão é pressionado. 
+
+Cria um objeto LiquidCrystal chamado lcd com os pinos de conexão ao Arduino para o RS, E, D4, D5, D6 e D7 do display LCD.
+```arduino
+#define botao 10
+```
+
+Define o pino 10 como a constante botao para conectar o botão.
+```arduino
+int statusBotao;
+```
+
+Declara uma variável inteira chamada statusBotao para armazenar o estado do botão (HIGH ou LOW).
+```arduino
+const int buzzerPin = 6; 
+```
+
+Declara uma constante inteira chamada buzzerPin e atribui o valor 6 a ela, indicando que o buzzer está conectado ao pino 6 do Arduino.
+```arduino
+void setup()
+{
+  lcd.begin(16, 2);
+  pinMode(botao, INPUT);
+}
+```
+
+No bloco setup(), inicializa o display LCD com 16 colunas e 2 linhas. Define o pino do botão como entrada.
+```arduino
+void loop()
+{
+  statusBotao = digitalRead(botao); 
+  
+  if (statusBotao == HIGH)
+  {
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Uma ambulancia");
+    lcd.setCursor(0, 1);
+    lcd.print("esta a caminho!");
+    tone(buzzerPin, 500);
+    delay(300);
+    noTone(buzzerPin);
+    delay(5000);
+    lcd.clear();
+  }
+}
+```
+
+No bloco loop(), lê o estado do botão utilizando digitalRead(botao). Se o botão estiver pressionado (statusBotao == HIGH), o programa realiza as seguintes ações:
+
+1- Limpa o display LCD.<p>
+2- Define o cursor na posição (0, 0) e imprime "Uma ambulancia".<p>
+3- Define o cursor na posição (0, 1) e imprime "esta a caminho!".<p>
+4- Emite um tom no buzzer com frequência de 500 Hz por 300 milissegundos.<p>
+5- Aguarda 5 segundos.<p>
+6- Limpa o display LCD novamente.<p>
+
+Essencialmente, quando o botão é pressionado, o programa exibe uma mensagem no LCD, emite um som no buzzer e aguarda 5 segundos antes de limpar o LCD. Isso simula a situação de uma ambulância a caminho.
+
 # Componentes Necessários
 Arduino Uno (ou compatível): Placa principal para o projeto.
 LCD 16x2: Display para exibir mensagens.

@@ -12,6 +12,8 @@ Este ainda é relacionado a matéria Edge Computing e Computer Systems, ministra
 
 Bem-vindo ao Hapvida Away, um projeto dedicado a conscientizar sobre primeiros socorros e resposta a emergências. Este README fornece uma visão geral da estrutura do projeto e de seus principais componentes.
 
+Link do Tinkercad- https://www.tinkercad.com/things/iNZEdO2ktEO-funky-vihelmo/editel?sharecode=pzwXASSSfQL1EABfkrBUFGQQ4A-C73FJv4Z9cL_nrPg 
+
 Esse código é um programa para Arduino que utiliza uma tela de LCD (LiquidCrystal) e um botão para simular uma situação em que uma ambulância está a caminho. Além disso, ele emite um som através de um buzzer quando o botão é pressionado. 
 
 Cria um objeto LiquidCrystal chamado lcd com os pinos de conexão ao Arduino para o RS, E, D4, D5, D6 e D7 do display LCD.
